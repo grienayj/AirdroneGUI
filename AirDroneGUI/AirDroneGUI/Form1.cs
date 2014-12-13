@@ -37,13 +37,43 @@ namespace AirDroneGUI
         {
             if (!keys.Contains(e.KeyCode.ToString()))
             { keys.Add(e.KeyCode.ToString()); }
-            
+
             if (keys.Contains("Z"))
+            {
+                Ctheta++;
+
+            }
+            else if (keys.Contains("S"))
+            {
+                Ctheta--;
+            }
+
+            if (keys.Contains("E"))
+            {
+                Cpsi++;
+
+            }
+            else if (keys.Contains("A"))
+            {
+                Cpsi--;
+            }
+
+            if (keys.Contains("D"))
+            {
+                Cphi++;
+
+            }
+            else if (keys.Contains("Q"))
+            {
+                Cphi--;
+            }
+
+            if (keys.Contains("W"))
             {
                 motVal++;
 
             }
-            else if (keys.Contains("S"))
+            else if (keys.Contains("X"))
             {
                 motVal--;
             }
@@ -52,6 +82,22 @@ namespace AirDroneGUI
             { motVal = 100; }
             if (motVal < 0)
             { motVal = 0; }
+
+            if (Ctheta > 50)
+            { Ctheta = 50; }
+            if (Ctheta < -50)
+            { Ctheta = -50; }
+
+            if (Cphi > 50)
+            { Cphi = 50; }
+            if (Cphi < -50)
+            { Cphi = -50; }
+
+            if (Cpsi > 50)
+            { Cpsi = 50; }
+            if (Cpsi < -50)
+            { Cpsi = -50; }
+
             /*
             if (connected)
             {
@@ -84,8 +130,14 @@ namespace AirDroneGUI
                 //Thread.Sleep(10);*
             }*/
 
-            Trottle_label.Text = motVal.ToString();
-            Trottle_progressBar.Value = motVal;
+            trust_label.Text = motVal.ToString();
+            Ctheta_label.Text = Ctheta.ToString();
+            Cphi_label.Text = Cphi.ToString();
+            Cpsi_label.Text = Cpsi.ToString();
+            trust_trackBar.Value = motVal;
+            Ctheta_trackBar.Value = Ctheta;
+            Cphi_trackBar.Value = Cphi;
+            Cpsi_trackBar.Value = Cpsi;
 
             label_rval.Text = rval.ToString();
         }
